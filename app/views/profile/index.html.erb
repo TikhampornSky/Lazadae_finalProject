@@ -1,0 +1,21 @@
+<h1>Profile</h1>
+
+<p> <b>User_id:</b> <%= @user_id %> </p>
+<p> <b>Email:</b> <%= @email %> </p>
+<p> <b>Name:</b> <%= @name %> </p>
+<% if (@user_type == 0) %>
+    <p> <b>Role:</b> Admin</p>
+<% elsif (@user_type == 1) %>
+    <p> <b>Role:</b> Seller</p>
+<% else %>
+    <p> <b>Role:</b> Buyer</p>
+<% end %>
+
+<br><br>
+<p> <b>Changing password</b> </p>
+
+<form action="/profile/changePassword" method="get">
+  <label for="password">Enter your new password:</label>
+  <input type="text" id="password" name="password"><br><br>
+  <input type="submit" value="Submit">
+</form>

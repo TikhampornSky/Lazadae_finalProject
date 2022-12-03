@@ -1,4 +1,5 @@
 class MarketsController < ApplicationController
+  before_action :must_be_logged_in
   before_action :set_market, only: %i[ show edit update destroy ]
 
   # GET /markets or /markets.json

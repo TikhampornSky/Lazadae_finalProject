@@ -7,4 +7,9 @@ Rails.application.routes.draw do
 
   # Defines the root path route ("/")
   # root "articles#index"
+  # root :to => "users#index"       #Changing first page
+  get '/login', to: 'login#index'
+  get '/login/create'
+  get '/profile', to: 'profile#index'
+  get '/profile/changePassword'
 end
