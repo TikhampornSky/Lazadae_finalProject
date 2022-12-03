@@ -5,7 +5,7 @@ class LoginController < ApplicationController
   def create
     u = User.where(email: params[:email]).first
     if u && u.authenticate(params[:password])
-        redirect_to '/profile'
+        redirect_to '/main'
         session[:logged_in] = true
         session[:user_id] = u.id
     else 

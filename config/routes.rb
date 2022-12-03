@@ -12,4 +12,5 @@ Rails.application.routes.draw do
   get '/login/create'
   get '/profile', to: 'profile#index'
   get '/profile/changePassword'
+  get '/main', to: 'main#index'
 end
