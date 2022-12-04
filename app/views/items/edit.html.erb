@@ -5,6 +5,7 @@
 <br>
 
 <div>
-  <%= link_to "Show this item", @item %> |
-  <%= link_to "Back to items", items_path %>
+  <%= link_to "Show this item", @item, class:"btn btn-warning" %> |
+  <%= link_to "Back to items", items_path, class:"btn btn-info" %>
+  <%= link_to "Back to Inventory", '/my_inventory', class:"btn btn-info" %>
 </div>

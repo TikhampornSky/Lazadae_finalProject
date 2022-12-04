@@ -13,4 +13,8 @@ Rails.application.routes.draw do
   get '/profile', to: 'profile#index'
   get '/profile/changePassword'
   get '/main', to: 'main#index'
+  get '/my_inventory', to: 'my_inventory#index'
+  get '/my_inventory/create'
+  get '/my_inventory/newItem'
+  get '/my_inventory/:id', to: 'my_inventory#destroy_item'
 end

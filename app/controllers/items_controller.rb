@@ -5,6 +5,7 @@ class ItemsController < ApplicationController
   # GET /items or /items.json
   def index
     @items = Item.all
+    session[:previous_page] = '/items'
   end
 
   # GET /items/1 or /items/1.json
@@ -25,9 +26,15 @@ class ItemsController < ApplicationController
   def create
     @editing = false
     @item = Item.new(item_params)
-
+    @user_id = session[:user_id]
     respond_to do |format|
       if @item.save
+        # ----- Create in market -----
+        # m = Market.new
+        # m.user_id = @user_id
+        # m.item_id = 9
+        # m.price = 8
+        # ----------------------------
         format.html { redirect_to item_url(@item), notice: "Item was successfully created." }
         format.json { render :show, status: :created, location: @item }
       else
@@ -67,6 +74,7 @@ class ItemsController < ApplicationController
     # Use callbacks to share common setup or constraints between actions.
     def set_item
       @item = Item.find(params[:id])
+      session[:previous_page] = '/items'
     end
 
     # Only allow a list of trusted parameters through.

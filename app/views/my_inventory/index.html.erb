@@ -1,0 +1,42 @@
+<h1> My Inventory Page </h1>
+
+<p> User ID: <%= @user_id %> </p>
+
+<table class="table">
+    <tr>
+        <th>Name</th>
+        <th>Category</th>
+        <th>Price</th>
+        <th>Stock</th>
+        <th>Enable</th>
+        <th> </th>
+    </tr>
+  
+    <div id="items">
+        <% @myItem.each do |item| %>
+            <tr>
+                <td>  <%= Item.find(item.item_id).name %></td>
+                <td>  <%= Item.find(item.item_id).category %> </td>
+                <td>  <%= item.price %> </td>
+                <td>  <%= item.stock %> </td>
+                <% if (Item.find(item.item_id).enable == true) %>
+                    <td> Approve for sell </td>
+                <% else %>
+                    <td> Reject for sell </td>
+                <% end %>
+                <td>
+                    <%= link_to "Edit", "/markets/#{item.id}/edit", class:"btn btn-info" %>
+                    <%= link_to "Delete", "/my_inventory/#{item.item_id}", class:"btn btn-danger" %>
+                </td>
+            </tr>
+        <% end %>
+    </div>
+</table>
+
+<%= link_to "New Items", "/items/new", class:"btn btn-success" %>
+
+<style>
+    table, th, td {
+        border: 1px solid;
+    }
+</style>
