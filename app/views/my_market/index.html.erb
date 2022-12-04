@@ -10,8 +10,7 @@
             <th>Picture</th>
             <th>Price</th>
             <th>Current Stock</th>
-            <th><b>Number that want to buy</b></th>
-            <th>Buy</th>
+            <th><b>Buying</b></th>
         </tr>
     </thead>
   
@@ -27,17 +26,13 @@
                 </td>
                 <td> <%= Market.where(item_id: item.id).first.price %> </td>
                 <td> <%= Market.where(item_id: item.id).first.stock %> </td>
-
-                <% if (session[:logged_in] == true) %>
-                    <%= form_with url: "/search", method: :get do |form| %>
-                        <td>
-                            <%= form.number_field :buying %>
-                        </td>
-                        <td> 
-                            <%= form.submit "BUY", class:"btn btn-info" %> 
-                        </td>
+                <td>
+                    <%= form_with url: "/my_market/buy", method: :get do |form| %>
+                        <%= form.hidden_field :item_id, value: item.id %>
+                        <%= form.number_field :buying, :required => true, min: 1 %>
+                        <%= form.submit "BUY", class:"btn btn-info" %> 
                     <% end %>
-                <% end %>
+                </td>
             </tr>
         <% end %>
     </tbody>
