@@ -1,4 +1,6 @@
 Rails.application.routes.draw do
+  get '/items/my_inventory_item'
+  post '/items/create_myInventory'
   resources :markets
   resources :inventories
   resources :items

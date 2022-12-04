@@ -15,6 +15,7 @@ class ItemsController < ApplicationController
   # GET /items/new
   def new
     @item = Item.new
+    @editing = false
   end
 
   # GET /items/1/edit
@@ -26,15 +27,21 @@ class ItemsController < ApplicationController
   def create
     @editing = false
     @item = Item.new(item_params)
+
     @user_id = session[:user_id]
+    @price = market_params[:price]
+    @stock = market_params[:stock]
+
     respond_to do |format|
       if @item.save
-        # ----- Create in market -----
-        # m = Market.new
-        # m.user_id = @user_id
-        # m.item_id = 9
-        # m.price = 8
-        # ----------------------------
+
+        @market = Market.new
+        @market.user_id = session[:user_id]
+        @market.item_id = @item.id
+        @market.price = @price
+        @market.stock = @stock
+        @market.save
+
         format.html { redirect_to item_url(@item), notice: "Item was successfully created." }
         format.json { render :show, status: :created, location: @item }
       else
@@ -70,15 +77,26 @@ class ItemsController < ApplicationController
     end
   end
 
+  # ----------------------
+  def my_inventory_item
+  end
+
+  def create_myInventory
+  end
+  # ----------------------
+
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_item
       @item = Item.find(params[:id])
-      session[:previous_page] = '/items'
     end
 
     # Only allow a list of trusted parameters through.
     def item_params
       params.require(:item).permit(:name, :category, :enable, :lock_version, :picture)
+    end
+
+    def market_params
+      params.require(:item).permit(:price, :stock)
     end
 end

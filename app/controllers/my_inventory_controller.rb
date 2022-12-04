@@ -18,25 +18,25 @@ class MyInventoryController < ApplicationController
   end
 
   def newItem
-    @name = params[:name]
-    @category = params[:category]
-    @price = params[:price]
-    @stock = params[:stock]
+    # @name = params[:name]
+    # @category = params[:category]
+    # @price = params[:price]
+    # @stock = params[:stock]
 
-    @item = Item.new
-    @item.name = @name
-    @item.category = @category
-    @item.enable = false
-    @item.save
+    # @item = Item.new
+    # @item.name = @name
+    # @item.category = @category
+    # @item.enable = false
+    # @item.save
 
-    @market = Market.new
-    @market.user_id = session[:user_id]
-    @market.item_id = @item.id
-    @market.price = @price
-    @market.stock = @stock
-    @market.save
+    # @market = Market.new
+    # @market.user_id = session[:user_id]
+    # @market.item_id = @item.id
+    # @market.price = @price
+    # @market.stock = @stock
+    # @market.save
 
-    redirect_to '/my_inventory', notice: 'Adding new item succesfully!!!'
+    # redirect_to '/my_inventory', notice: 'Adding new item succesfully!!!'
 
   end
 

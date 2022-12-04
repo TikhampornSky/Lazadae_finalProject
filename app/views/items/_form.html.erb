@@ -26,6 +26,20 @@
     <%= form.label :enable, style: "display: block" %>
     <%= form.check_box :enable %>
   </div>
+
+
+  <% if (@editing == false) %>
+    <div>
+      <%= form.label :price, style: "display: block" %>
+      <%= form.text_field :price %>
+    </div>
+
+    <div>
+      <%= form.label :stock, style: "display: block" %>
+      <%= form.number_field :stock %>
+    </div>
+  <% end %>
+
   <div>
     <%= form.label :picture, style: "display: block", class:"form-label" %>
     <%= form.file_field :picture, class:"form-control" , id:"inputGroupFile01" %>

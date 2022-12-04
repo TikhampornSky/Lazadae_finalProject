@@ -5,6 +5,7 @@
 <table class="table">
     <tr>
         <th>Name</th>
+        <th>Picture</th>
         <th>Category</th>
         <th>Price</th>
         <th>Stock</th>
@@ -15,10 +16,15 @@
     <div id="items">
         <% @myItem.each do |item| %>
             <tr>
-                <td>  <%= Item.find(item.item_id).name %></td>
-                <td>  <%= Item.find(item.item_id).category %> </td>
-                <td>  <%= item.price %> </td>
-                <td>  <%= item.stock %> </td>
+                <td> <%= Item.find(item.item_id).name %></td>
+                <td> 
+                    <% if Item.find(item.item_id).picture.attached? %> 
+                        <%= image_tag Item.find(item.item_id).picture.variant(:thumb) %>
+                    <% end %>
+                </td>
+                <td> <%= Item.find(item.item_id).category %> </td>
+                <td> <%= item.price %> </td>
+                <td> <%= item.stock %> </td>
                 <% if (Item.find(item.item_id).enable == true) %>
                     <td> Approve for sell </td>
                 <% else %>
