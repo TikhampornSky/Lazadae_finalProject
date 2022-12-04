@@ -22,4 +22,5 @@ Rails.application.routes.draw do
   get '/my_inventory/:id', to: 'my_inventory#destroy_item'
   get '/my_market', to: 'my_market#index'
   get '/my_market/buy'
+  get '/purchase_history', to: 'purchase_history#index'
 end

@@ -20,7 +20,7 @@ class MyMarketController < ApplicationController
       @inventory = Inventory.new
       @inventory.user_id = session[:user_id]
       @inventory.seller_id = @market.user_id
-      @inventory.price = @market.price * @want_to_buy
+      @inventory.price = @market.price
       @inventory.qty = @want_to_buy
       @inventory.save
 
