@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  get 'my_market/index'
   get '/items/my_inventory_item'
   post '/items/create_myInventory'
   resources :markets
@@ -19,4 +20,5 @@ Rails.application.routes.draw do
   get '/my_inventory/create'
   get '/my_inventory/newItem'
   get '/my_inventory/:id', to: 'my_inventory#destroy_item'
+  get '/my_market', to: 'my_market#index'
 end

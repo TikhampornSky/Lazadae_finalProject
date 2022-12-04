@@ -1,4 +1,6 @@
 class MyInventoryController < ApplicationController
+  before_action :must_be_logged_in
+  
   def index
     @user_id = session[:user_id]          
     @myItem = Market.where(user_id: @user_id).all

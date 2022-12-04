@@ -28,7 +28,7 @@
                 <% if (Item.find(item.item_id).enable == true) %>
                     <td> Approve for sell </td>
                 <% else %>
-                    <td> Reject for sell </td>
+                    <td> Pending... </td>
                 <% end %>
                 <td>
                     <%= link_to "Edit", "/markets/#{item.id}/edit", class:"btn btn-info" %>

@@ -43,7 +43,9 @@ gem "tzinfo-data", platforms: %i[ mingw mswin x64_mingw jruby ]
 gem "bootsnap", require: false
 
 # Use Sass to process CSS
-# gem "sassc-rails"
+gem 'jquery-rails'
+gem 'bootstrap-sass'
+
 gem 'bootstrap', '~> 5.2.2'
 
 # Use Active Storage variants [https://guides.rubyonrails.org/active_storage_overview.html#transforming-images]
@@ -71,3 +73,7 @@ group :test do
   gem "selenium-webdriver"
   gem "webdrivers"
 end
+
+# gem "jquery-datatables-rails", github: 'rweng/jquery-datatables-rails'
+gem "ajax-datatables-rails"
+gem "jquery-datatables"
