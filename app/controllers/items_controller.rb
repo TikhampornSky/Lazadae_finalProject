@@ -1,7 +1,8 @@
 class ItemsController < ApplicationController
   before_action :must_be_logged_in
   before_action :set_item, only: %i[ show edit update destroy ]
-  before_action :role, :authorization
+  before_action :role
+  before_action :authorization, only: %i[ index ]
   # before_action :authorization, except: [:edit, :show]
 
   def authorization
@@ -10,6 +11,32 @@ class ItemsController < ApplicationController
     else
       redirect_to '/permission'
     end
+  end
+
+  def newItem
+  end
+
+  def mynew
+    # @name = params[:name]
+    # @category = params[:category]
+    # @price = params[:price]
+    # @stock = params[:stock]
+
+    # @item = Item.new
+    # @item.name = @name
+    # @item.category = @category
+    # @item.enable = false
+    # @item.picture.attach(params[:picture])        # PROBLEM: Picture doesn't show
+    # @item.save
+
+    # @market = Market.new
+    # @market.user_id = session[:user_id]
+    # @market.item_id = @item.id
+    # @market.price = @price
+    # @market.stock = @stock
+    # @market.save
+
+    # redirect_to '/my_inventory', notice: 'Adding new item succesfully!!!'
   end
 
   # GET /items or /items.json

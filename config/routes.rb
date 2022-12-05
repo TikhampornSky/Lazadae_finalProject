@@ -2,6 +2,9 @@ Rails.application.routes.draw do
   get 'my_market/index'
   get '/items/my_inventory_item'
   post '/items/create_myInventory'
+  get 'items/mynew'
+  get 'items/create'
+  get 'items/newItem'
   resources :markets
   resources :inventories
   resources :items
@@ -19,7 +22,7 @@ Rails.application.routes.draw do
   get '/main', to: 'main#index'
   get '/permission', to: 'main#permission'
   get '/my_inventory', to: 'my_inventory#index'
-  get '/my_inventory/create'
+  get '/my_inventory/create', to: 'my_inventory#create'
   get '/my_inventory/newItem'
   get '/my_inventory/:id', to: 'my_inventory#destroy_item'
   get '/my_market', to: 'my_market#index'

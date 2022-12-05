@@ -11,7 +11,7 @@ class MyMarketController < ApplicationController
 
   def index
     @user_id = session[:user_id]
-    @myItem = Item.all
+    @myItem = Item.where(enable: true).all
   end
 
   def buy

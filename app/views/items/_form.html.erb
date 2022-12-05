@@ -22,10 +22,12 @@
     <%= form.text_field :category %>
   </div>
 
-  <div>
-    <%= form.label :enable, style: "display: block" %>
-    <%= form.check_box :enable %>
-  </div>
+  <% if (@myrole == 'admin') %>
+    <div>
+      <%= form.label :enable, style: "display: block" %>
+      <%= form.check_box :enable %>
+    </div>
+  <% end %>
 
 
   <% if (@editing == false) %>

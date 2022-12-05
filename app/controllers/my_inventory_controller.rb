@@ -26,6 +26,7 @@ class MyInventoryController < ApplicationController
   end
 
   def create
+
   end
 
   def newItem
@@ -34,11 +35,12 @@ class MyInventoryController < ApplicationController
     # @price = params[:price]
     # @stock = params[:stock]
 
-    # @item = Item.new
-    # @item.name = @name
-    # @item.category = @category
-    # @item.enable = false
-    # @item.save
+    # item = Item.new
+    # item.name = @name
+    # item.category = @category
+    # item.enable = false
+    # item.picture.attach(params[:picture])        # PROBLEM: Picture doesn't show
+    # item.save
 
     # @market = Market.new
     # @market.user_id = session[:user_id]

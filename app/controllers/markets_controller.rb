@@ -1,7 +1,8 @@
 class MarketsController < ApplicationController
   before_action :must_be_logged_in
   before_action :set_market, only: %i[ show edit update destroy ]
-  before_action :role, :authorization
+  before_action :role
+  before_action :authorization, only: %i[ index ]
   #before_action :authorization, except: [:edit, :show]
 
   def authorization
