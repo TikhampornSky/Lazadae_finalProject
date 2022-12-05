@@ -1,6 +1,15 @@
 class UsersController < ApplicationController
   before_action :must_be_logged_in
   before_action :set_user, only: %i[ show edit update destroy ]
+  before_action :role, :authorization
+
+  def authorization
+    if (@myrole == 'admin')
+    
+    else
+      redirect_to '/permission'
+    end
+  end
 
   # GET /users or /users.json
   def index

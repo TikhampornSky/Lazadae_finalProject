@@ -1,6 +1,15 @@
 class MyInventoryController < ApplicationController
   before_action :must_be_logged_in
-  
+  before_action :role, :authorization
+
+  def authorization
+    if (@myrole == 'admin' || @myrole == 'seller')
+    
+    else
+      redirect_to '/permission'
+    end
+  end
+
   def index
     @user_id = session[:user_id]          
     @myItem = Market.where(user_id: @user_id).all

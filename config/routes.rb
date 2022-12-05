@@ -13,9 +13,11 @@ Rails.application.routes.draw do
   # root :to => "users#index"       #Changing first page
   get '/login', to: 'login#index'
   get '/login/create'
+  get '/login/destroy'
   get '/profile', to: 'profile#index'
   get '/profile/changePassword'
   get '/main', to: 'main#index'
+  get '/permission', to: 'main#permission'
   get '/my_inventory', to: 'my_inventory#index'
   get '/my_inventory/create'
   get '/my_inventory/newItem'

@@ -1,6 +1,16 @@
 class ItemsController < ApplicationController
   before_action :must_be_logged_in
   before_action :set_item, only: %i[ show edit update destroy ]
+  before_action :role, :authorization
+  # before_action :authorization, except: [:edit, :show]
+
+  def authorization
+    if (@myrole == 'admin')
+    
+    else
+      redirect_to '/permission'
+    end
+  end
 
   # GET /items or /items.json
   def index

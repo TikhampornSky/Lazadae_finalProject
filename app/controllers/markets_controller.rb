@@ -1,7 +1,16 @@
 class MarketsController < ApplicationController
   before_action :must_be_logged_in
   before_action :set_market, only: %i[ show edit update destroy ]
+  before_action :role, :authorization
+  #before_action :authorization, except: [:edit, :show]
 
+  def authorization
+    if (@myrole == 'admin')
+    
+    else
+      redirect_to '/permission'
+    end
+  end
   # GET /markets or /markets.json
   def index
     @markets = Market.all

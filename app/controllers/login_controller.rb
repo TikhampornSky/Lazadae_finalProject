@@ -16,6 +16,7 @@ class LoginController < ApplicationController
 
   def destroy
     reset_session
+    redirect_to '/main'
   end
 
 end
