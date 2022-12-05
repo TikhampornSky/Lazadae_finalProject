@@ -22,6 +22,7 @@ class MyMarketController < ApplicationController
       @inventory.seller_id = @market.user_id
       @inventory.price = @market.price
       @inventory.qty = @want_to_buy
+      @inventory.item_id = @item_id
       @inventory.save
 
       redirect_to '/my_market', notice: "Completly buying ;)"

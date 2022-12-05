@@ -23,4 +23,5 @@ Rails.application.routes.draw do
   get '/my_market', to: 'my_market#index'
   get '/my_market/buy'
   get '/purchase_history', to: 'purchase_history#index'
+  get '/sale_history', to: 'sale_history#index'
 end
