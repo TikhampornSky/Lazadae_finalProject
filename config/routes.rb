@@ -24,4 +24,7 @@ Rails.application.routes.draw do
   get '/my_market/buy'
   get '/purchase_history', to: 'purchase_history#index'
   get '/sale_history', to: 'sale_history#index'
+  get '/top_seller', to: 'top_seller#index'
+  get '/top_seller/calculate'
+  get '/top_seller/:status/:start_date/:end_date', to: 'top_seller#index'
 end

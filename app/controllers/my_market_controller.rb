@@ -1,5 +1,5 @@
 class MyMarketController < ApplicationController
-  # before_action :must_be_logged_in
+  before_action :must_be_logged_in
 
   def index
     @user_id = session[:user_id]

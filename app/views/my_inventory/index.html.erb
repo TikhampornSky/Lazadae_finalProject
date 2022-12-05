@@ -2,17 +2,20 @@
 
 <p> User ID: <%= @user_id %> </p>
 
-<table class="table">
-    <tr>
-        <th>Name</th>
-        <th>Picture</th>
-        <th>Category</th>
-        <th>Price</th>
-        <th>Stock</th>
-        <th>Enable</th>
-        <th> </th>
-    </tr>
+<table class="table", id='invent'>
+    <thead>
+        <tr>
+            <th>Name</th>
+            <th>Picture</th>
+            <th>Category</th>
+            <th>Price</th>
+            <th>Stock</th>
+            <th>Enable</th>
+            <th> </th>
+        </tr>
+    </thead>
   
+    <tbody>
     <div id="items">
         <% @myItem.each do |item| %>
             <tr>
@@ -37,6 +40,7 @@
             </tr>
         <% end %>
     </div>
+    </tbody>
 </table>
 
 <%= link_to "New Items", "/items/new", class:"btn btn-success" %>
@@ -46,3 +50,9 @@
         border: 1px solid;
     }
 </style>
+
+<script> 
+    $(document).ready( function () {
+       $('#invent').DataTable();
+    });
+</script>

@@ -1,5 +1,6 @@
 class SaleHistoryController < ApplicationController
+  before_action :must_be_logged_in
   def index
-    @myItem = Inventory.where(user_id: session[:user_id]).all
+    @myItem = Inventory.where(seller_id: session[:user_id]).all
   end
 end
