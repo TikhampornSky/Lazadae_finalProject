@@ -3,15 +3,21 @@ require "test_helper"
 class ItemsControllerTest < ActionDispatch::IntegrationTest
   setup do
     @item = items(:one)
+    @myrole = 'admin'
+    @email = '0@gmail.com'
+    @password = "0"
+    get '/login/create', params: { email: @email, password: @password }
   end
 
   test "should get index" do
-    get items_url
+    # post items_url, params: { item: { category: @item.category, enable: @item.enable, name: @item.name } }
+    get '/items'
     assert_response :success
   end
 
   test "should get new" do
-    get new_item_url
+    #get new_item_url
+    get '/items/new'
     assert_response :success
   end
 
@@ -42,7 +48,6 @@ class ItemsControllerTest < ActionDispatch::IntegrationTest
     assert_difference("Item.count", -1) do
       delete item_url(@item)
     end
-
-    assert_redirected_to items_url
   end
+
 end

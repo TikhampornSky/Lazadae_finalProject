@@ -1,6 +1,6 @@
 <h1> Create Item for Inventory (Not used 2) </h1>
-
-<%= form_with url: "/items/create", method: :get do |form| %>
+<!-- /my_inventory/newItem -->
+<%= form_with(model: @item, url: "/items/create", method: :get) do |form| %>
     <%= form.hidden_field :lock_version %>
     <%= form.hidden_field :enable, value: false %>
     <div>
@@ -27,6 +27,7 @@
         <%= form.label :picture, style: "display: block", class:"form-label" %>
         <%= form.file_field :picture, class:"form-control" , id:"inputGroupFile01" %>
     </div>
+
     <br>
     <% if (@editing)  %>
         <% if(item.picture.attached?) %>
