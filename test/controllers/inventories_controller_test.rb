@@ -3,6 +3,10 @@ require "test_helper"
 class InventoriesControllerTest < ActionDispatch::IntegrationTest
   setup do
     @inventory = inventories(:one)
+    @myrole = 'admin'
+    @email = '0@gmail.com'
+    @password = "0"
+    get '/login/create', params: { email: @email, password: @password }
   end
 
   test "should get index" do

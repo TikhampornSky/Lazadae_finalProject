@@ -24,17 +24,20 @@ class MarketsController < ApplicationController
   # GET /markets/new
   def new
     @market = Market.new
+    @editing = false
   end
 
   # GET /markets/1/edit
   def edit
+    @editing = true
   end
 
   # POST /markets or /markets.json
   def create
     @market = Market.new(market_params)
-
     if ( User.where(id: @market.user_id) == [] )
+      p "======"
+      p @market.user_id
       redirect_to "/markets/new", notice: "Invalid user_id. Please try agian."
     elsif ( Item.where(id: @market.item_id) == [] )
       redirect_to "/markets/new", notice: "Invalid item_id. Please try agian."

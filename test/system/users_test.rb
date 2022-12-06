@@ -2,7 +2,16 @@ require "application_system_test_case"
 
 class UsersTest < ApplicationSystemTestCase
   setup do
-    @user = users(:one)
+    @user = users(:admin)
+    @myrole = 'admin'
+    @email = '0@gmail.com'
+    @password = "0"
+    visit '/login'
+    fill_in "email", with: @email
+    fill_in "password", with: @password
+
+    click_on "Submit"
+    assert_selector "h1", text: "Main Page of LAZADAE"
   end
 
   test "visiting the index" do
@@ -14,9 +23,9 @@ class UsersTest < ApplicationSystemTestCase
     visit users_url
     click_on "New user"
 
-    fill_in "Email", with: @user.email
+    fill_in "Email", with: "new@gmail.com"
     fill_in "Name", with: @user.name
-    fill_in "Password digest", with: @user.password_digest
+    fill_in "Password", with: @user.password_digest
     fill_in "User type", with: @user.user_type
     click_on "Create User"
 
@@ -30,7 +39,7 @@ class UsersTest < ApplicationSystemTestCase
 
     fill_in "Email", with: @user.email
     fill_in "Name", with: @user.name
-    fill_in "Password digest", with: @user.password_digest
+    fill_in "Password", with: @user.password_digest
     fill_in "User type", with: @user.user_type
     click_on "Update User"
 
@@ -39,6 +48,7 @@ class UsersTest < ApplicationSystemTestCase
   end
 
   test "should destroy User" do
+    @user = users(:buyer)
     visit user_url(@user)
     click_on "Destroy this user", match: :first
 

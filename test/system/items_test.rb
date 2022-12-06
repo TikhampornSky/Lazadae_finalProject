@@ -3,6 +3,15 @@ require "application_system_test_case"
 class ItemsTest < ApplicationSystemTestCase
   setup do
     @item = items(:one)
+    @myrole = 'admin'
+    @email = '0@gmail.com'
+    @password = "0"
+    visit '/login'
+    fill_in "email", with: @email
+    fill_in "password", with: @password
+
+    click_on "Submit"
+    assert_selector "h1", text: "Main Page of LAZADAE"
   end
 
   test "visiting the index" do
@@ -20,7 +29,7 @@ class ItemsTest < ApplicationSystemTestCase
     click_on "Create Item"
 
     assert_text "Item was successfully created"
-    click_on "Back"
+    click_on "Back to items"
   end
 
   test "should update Item" do
@@ -33,7 +42,7 @@ class ItemsTest < ApplicationSystemTestCase
     click_on "Update Item"
 
     assert_text "Item was successfully updated"
-    click_on "Back"
+    click_on "Back to items"
   end
 
   test "should destroy Item" do

@@ -2,7 +2,11 @@ require "test_helper"
 
 class UsersControllerTest < ActionDispatch::IntegrationTest
   setup do
-    @user = users(:one)
+    @user = users(:admin)
+    @myrole = 'admin'
+    @email = '0@gmail.com'
+    @password = "0"
+    get '/login/create', params: { email: @email, password: @password }
   end
 
   test "should get index" do
@@ -15,9 +19,9 @@ class UsersControllerTest < ActionDispatch::IntegrationTest
     assert_response :success
   end
 
-  test "should create user" do
+  test "should create user" do        #It cannot create new user if the email is exist
     assert_difference("User.count") do
-      post users_url, params: { user: { email: @user.email, name: @user.name, password_digest: @user.password_digest, user_type: @user.user_type } }
+      post users_url, params: { user: { email: "try@gmail.com", name: @user.name, password: "try", user_type: @user.user_type } }
     end
 
     assert_redirected_to user_url(User.last)
@@ -39,6 +43,7 @@ class UsersControllerTest < ActionDispatch::IntegrationTest
   end
 
   test "should destroy user" do
+    @user = users(:buyer)
     assert_difference("User.count", -1) do
       delete user_url(@user)
     end

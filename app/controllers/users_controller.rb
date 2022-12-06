@@ -33,6 +33,7 @@ class UsersController < ApplicationController
   def create
     @user = User.new(user_params)
     if (User.where(email: "#{@user.email}") != [])
+      p "This Email is already used."
       redirect_to '/users/new', notice: "This Email is already used."
     else
       respond_to do |format|
@@ -41,6 +42,11 @@ class UsersController < ApplicationController
           format.html { redirect_to user_url(@user), notice: "User was successfully created." }
           format.json { render :show, status: :created, location: @user }
         else
+          # p "unprocessable_entity"
+          # p user_params[:email]
+          # p user_params[:name]
+          # p user_params[:password]
+          # p user_params[:user_type]
           format.html { render :new, status: :unprocessable_entity }
           format.json { render json: @user.errors, status: :unprocessable_entity }
         end
@@ -70,11 +76,17 @@ class UsersController < ApplicationController
 
   # DELETE /users/1 or /users/1.json
   def destroy
-    @user.destroy
-
-    respond_to do |format|
-      format.html { redirect_to users_url, notice: "User was successfully destroyed." }
-      format.json { head :no_content }
+    if (@user.id == session[:user_id])
+      redirect_to '/users', notice: 'Cannot delete yourself'
+    else
+      Inventory.where(user_id: @user.id).destroy_all
+      Inventory.where(seller_id: @user.id).destroy_all
+      Market.where(user_id: @user.id).destroy_all
+      @user.destroy
+      respond_to do |format|
+        format.html { redirect_to users_url, notice: "User was successfully destroyed." }
+        format.json { head :no_content }
+      end
     end
   end
 
