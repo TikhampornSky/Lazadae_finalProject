@@ -12,4 +12,14 @@ class ProfileControllerTest < ActionDispatch::IntegrationTest
     get '/profile'
     assert_response :success
   end
+
+  test "changing password" do
+    get '/profile'
+    get '/profile/changePassword', params: { password: "000" }
+    assert_redirected_to '/login'
+    get '/main'
+    assert_redirected_to '/login'   # Must login with new password
+    get '/login/create', params: { email: @email, password: "000" }     #Login with new password
+    assert_redirected_to '/main'
+  end
 end

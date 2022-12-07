@@ -5,9 +5,11 @@ one:
   seller_id: 991613951      # seller
   price: 1.5
   qty: 1
+  item_id: 298486374
 
 two:
   user_id: 76570549
   seller_id: 991613951
   price: 1.5
   qty: 1
+  item_id: 298486374
