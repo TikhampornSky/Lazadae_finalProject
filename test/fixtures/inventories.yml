@@ -1,15 +1,15 @@
 # Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
 
 one:
-  user_id: 76570549        # buyer
+  user_id: 135138680        # buyer
   seller_id: 991613951      # seller
   price: 1.5
-  qty: 1
-  item_id: 298486374
+  qty: 5
+  item_id: 980190962
 
 two:
   user_id: 76570549
   seller_id: 991613951
   price: 1.5
-  qty: 1
-  item_id: 298486374
+  qty: 3
+  item_id: 980190962

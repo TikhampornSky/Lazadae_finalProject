@@ -182,6 +182,42 @@ class LoginTest < ApplicationSystemTestCase
     #-------------------------
   end
 
+  test "authorization_sale_history" do
+    #----test for "admin"----
+    visit '/login'
+    fill_in "email", with: @email
+    fill_in "password", with: @password
+
+    click_on "Submit"
+    assert_selector "h1", text: "Main Page of LAZADAE"
+
+    visit '/sale_history'
+    assert_selector "h1", text: "Sale History"
+    #-------------------------
+    #----test for "seller"----
+    visit '/login'
+    fill_in "email", with: @email1
+    fill_in "password", with: @password1
+
+    click_on "Submit"
+    assert_selector "h1", text: "Main Page of LAZADAE"
+
+    visit '/sale_history '
+    assert_selector "h1", text: "Sale History"
+    #-------------------------
+    #----test for "buyer"----
+    visit '/login'
+    fill_in "email", with: @email2
+    fill_in "password", with: @password2
+
+    click_on "Submit"
+    assert_selector "h1", text: "Main Page of LAZADAE"
+
+    visit '/sale_history '
+    assert_selector "h3", text: "Unaccess!!!"
+    #-------------------------
+  end
+
   test "authorization_my_inventory" do
     #----test for "admin"----
     visit '/login'

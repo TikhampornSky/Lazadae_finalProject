@@ -25,7 +25,7 @@
                 <td> <%= item.qty %></td>
                 <td> <%= item.price*item.qty %></td>
                 <td> <%= User.find(item.seller_id).name %></td>
-                <td> <%= item.updated_at.localtime %></td>
+                <td> <%= item.created_at.localtime %></td>
             </tr>
         <% end %>
     </div>

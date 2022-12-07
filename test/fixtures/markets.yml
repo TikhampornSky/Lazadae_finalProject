@@ -2,12 +2,12 @@
 
 one:
   user_id: 991613951
-  item_id: 298486374
+  item_id: 980190962
   price: 1.5
-  stock: 1
+  stock: 10
 
 two:
   user_id: 991613951
-  item_id: 980190962
-  price: 1.5
-  stock: 1
+  item_id: 298486374
+  price: 2.5
+  stock: 20
