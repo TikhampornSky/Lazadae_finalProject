@@ -49,4 +49,17 @@ class InventoriesControllerTest < ActionDispatch::IntegrationTest
 
     assert_redirected_to inventories_url
   end
+
+  test "locking" do
+    i1 = Inventory.find(inventories(:one).id)
+    i2 = Inventory.find(inventories(:one).id)
+
+    i1.price = "10"
+    i1.save
+
+    assert_raises("Attempted to update a stale object: Inventory.") do
+      i2.price = "11"
+      i2.save
+    end
+  end
 end

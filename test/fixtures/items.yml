@@ -4,8 +4,10 @@ one:
   name: "oneItem"
   category: "one"
   enable: true
+  lock_version: 0
 
 two:
   name: "twoItem"
   category: "one"
   enable: false
+  lock_version: 0

@@ -49,4 +49,18 @@ class MarketsControllerTest < ActionDispatch::IntegrationTest
 
     assert_redirected_to markets_url
   end
+
+  test "locking" do
+    i1 = Market.find(markets(:one).id)
+    i2 = Market.find(markets(:one).id)
+
+    i1.price = 999
+    i1.save
+
+    assert_raises("Attempted to update a stale object: Inventory.") do
+      i2.price = 888
+      i2.save
+    end
+  end
+
 end

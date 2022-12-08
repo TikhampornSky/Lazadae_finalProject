@@ -52,4 +52,17 @@ class ItemsControllerTest < ActionDispatch::IntegrationTest
     end
   end
 
+  test "locking" do
+    i1 = Item.find(items(:one).id)
+    i2 = Item.find(items(:one).id)
+
+    i1.name = "item1"
+    i1.save
+
+    assert_raises("Attempted to update a stale object: Inventory.") do
+      i2.name = "item2"
+      i2.save
+    end
+  end
+
 end

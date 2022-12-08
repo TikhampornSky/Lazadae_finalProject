@@ -50,4 +50,18 @@ class UsersControllerTest < ActionDispatch::IntegrationTest
 
     assert_redirected_to users_url
   end
+
+  test "locking" do
+    i1 = User.find(users(:admin).id)
+    i2 = User.find(users(:admin).id)
+
+    i1.name = "name1"
+    i1.save
+
+    assert_raises("Attempted to update a stale object: Inventory.") do
+      i2.name = "name2"
+      i2.save
+    end
+  end
+
 end

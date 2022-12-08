@@ -6,6 +6,7 @@ one:
   price: 1.5
   qty: 5
   item_id: 980190962
+  lock_version: 0
 
 two:
   user_id: 76570549
@@ -13,6 +14,7 @@ two:
   price: 1.5
   qty: 3
   item_id: 980190962
+  lock_version: 0
 
 three:
   user_id: 76570549
@@ -20,3 +22,4 @@ three:
   price: 100
   qty: 3
   item_id: 980190962
+  lock_version: 0
