@@ -12,4 +12,15 @@ class TopSellerControllerTest < ActionDispatch::IntegrationTest
     get '/top_seller'
     assert_response :success
   end
+
+  test "specify date caseOK" do
+    get '/top_seller/calculate', params: { start_date: '05/12/2022', end_date: '07/12/2022' }
+    assert_response :redirect
+  end
+
+  test "specify date caseERROR" do
+    get '/top_seller/calculate', params: { start_date: '09/12/2022', end_date: '07/12/2022' }
+    assert_response :redirect
+  end
+
 end

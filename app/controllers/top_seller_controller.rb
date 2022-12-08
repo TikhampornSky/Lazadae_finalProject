@@ -20,8 +20,8 @@ class TopSellerController < ApplicationController
       # Job.group(:user_id).select('SUM(total_days) as tot').order('tot desc')
       @start_date = params[:start_date]
       @end_date = params[:end_date]
-      @seller_qty = Inventory.where('updated_at BETWEEN ? AND ?', @start_date, @end_date).group(:seller_id).select('seller_id, SUM(qty) as qtyy').order('qtyy desc')
-      @seller_totalPrice = Inventory.where('updated_at BETWEEN ? AND ?', @start_date, @end_date).group(:seller_id).select('seller_id, SUM(qty*price) as qtyy').order('qtyy desc')
+      @seller_qty = Inventory.where('created_at BETWEEN ? AND ?', @start_date, @end_date).group(:seller_id).select('seller_id, SUM(qty) as qtyy').order('qtyy desc')
+      @seller_totalPrice = Inventory.where('created_at BETWEEN ? AND ?', @start_date, @end_date).group(:seller_id).select('seller_id, SUM(qty*price) as qtyy').order('qtyy desc')
     end
   end
 
@@ -31,7 +31,7 @@ class TopSellerController < ApplicationController
     if (@start_date <= @end_date)
       redirect_to "/top_seller/ok/#{@start_date}/#{@end_date}"
     else
-      redirect_to '/top_seller', notice: 'Try again'
+      redirect_to '/top_seller', notice: 'วันเริ่มต้นต้อง "น้อยกว่า" วันสิ้นสุด'
     end
   end
 end

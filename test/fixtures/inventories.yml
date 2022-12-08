@@ -13,3 +13,10 @@ two:
   price: 1.5
   qty: 3
   item_id: 980190962
+
+three:
+  user_id: 76570549
+  seller_id: 135138680
+  price: 100
+  qty: 3
+  item_id: 980190962
