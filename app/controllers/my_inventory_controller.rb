@@ -19,7 +19,9 @@ class MyInventoryController < ApplicationController
 
   def destroy_item 
     @item = Item.find(params[:id])
+    @item
     Market.destroy_by(item_id: params[:id])
+    Inventory.destroy_by(item_id: params[:id])
     @item.destroy
 
     redirect_to '/my_inventory', notice: 'Delete succesfully!!!'
@@ -30,34 +32,31 @@ class MyInventoryController < ApplicationController
   end
 
   def newItem
-    @name = params[:item][:name]
-    @category = params[:item][:category]
+    # @name = params[:item][:name]
+    # @category = params[:item][:category]
 
-    @item = Item.new
-    @item.name = @name
-    @item.category = @category
-    @item.enable = false
-    @item.lock_version = params[:item][:lock_version]
-    @item.picture.attach(params[:item][:picture])        # PROBLEM: Picture doesn't show
-    uploaded_file = params[:item][:picture]
-    File.open(Rails.root.join('public', 'uploads', uploaded_file.original_filename), 'wb') do |file|
-    file.write(uploaded_file.read)
-    end
+    # @item = Item.new
+    # @item.name = @name
+    # @item.category = @category
+    # @item.enable = false
+    # @item.lock_version = params[:item][:lock_version]
+    # @item.picture.attach(params[:item][:picture])        # PROBLEM: Picture doesn't show
+    # uploaded_file = params[:item][:picture]
 
-    @item.save
+    # @item.save
     
-    @market = Market.new
-    @market.user_id = session[:user_id]
-    @market.item_id = @item.id
+    # @market = Market.new
+    # @market.user_id = session[:user_id]
+    # @market.item_id = @item.id
 
-    @price = market_params[:price]
-    @stock = market_params[:stock]
+    # @price = market_params[:price]
+    # @stock = market_params[:stock]
 
-    @market.price = @price
-    @market.stock = @stock
-    @market.save
+    # @market.price = @price
+    # @market.stock = @stock
+    # @market.save
 
-    redirect_to '/my_inventory', notice: 'Adding new item succesfully!!!'
+    # redirect_to '/my_inventory', notice: 'Adding new item succesfully!!!'
 
   end
 

@@ -4,8 +4,10 @@
 
 <div>
   <%= link_to "Edit this item", edit_item_path(@item) %> |
-  <%= link_to "Back to items", items_path, class:"btn btn-info" %>
   <%= link_to "Back to Inventory", '/my_inventory', class:"btn btn-info" %>
 
-  <%= button_to "Destroy this item", @item, method: :delete %>
+  <% if (@myrole == 'admin') %>
+    <%= link_to "Back to items", items_path, class:"btn btn-info" %>
+    <%= button_to "Destroy this item", @item, method: :delete %>
+  <% end %>
 </div>

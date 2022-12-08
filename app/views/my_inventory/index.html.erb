@@ -35,7 +35,7 @@
                 <% end %>
                 <td>
                     <%= link_to "Edit", "/markets/#{item.id}/edit", class:"btn btn-info" %>
-                    <%= link_to "Delete", "/my_inventory/#{item.item_id}", class:"btn btn-danger" %>
+                    <%= link_to "Delete", "/my_inventory/destroy_item/#{item.item_id}", class:"btn btn-danger" %>
                 </td>
             </tr>
         <% end %>

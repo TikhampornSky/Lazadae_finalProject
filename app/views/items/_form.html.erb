@@ -14,12 +14,12 @@
 
   <div>
     <%= form.label :name, style: "display: block" %>
-    <%= form.text_field :name %>
+    <%= form.text_field :name, :required => true %>
   </div>
 
   <div>
     <%= form.label :category, style: "display: block" %>
-    <%= form.text_field :category %>
+    <%= form.text_field :category, :required => true %>
   </div>
 
   <% if (@myrole == 'admin') %>
@@ -33,12 +33,12 @@
   <% if (@editing == false) %>
     <div>
       <%= form.label :price, style: "display: block" %>
-      <%= form.text_field :price %>
+      <%= form.text_field :price, :required => true %>
     </div>
 
     <div>
       <%= form.label :stock, style: "display: block" %>
-      <%= form.number_field :stock %>
+      <%= form.number_field :stock, :required => true %>
     </div>
   <% end %>
 
