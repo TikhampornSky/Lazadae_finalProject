@@ -26,6 +26,8 @@ class ItemsTest < ApplicationSystemTestCase
     fill_in "Category", with: @item.category
     check "Enable" if @item.enable
     fill_in "Name", with: @item.name
+    fill_in "Price", with: 30
+    fill_in "Stock", with: 10
     click_on "Create Item"
 
     assert_text "Item was successfully created"

@@ -27,6 +27,7 @@ class InventoriesTest < ApplicationSystemTestCase
     fill_in "Qty", with: @inventory.qty
     fill_in "Seller", with: @inventory.seller_id
     fill_in "User", with: @inventory.user_id
+    fill_in "Item", with: items(:one).id
     click_on "Create Inventory"
 
     assert_text "Inventory was successfully created"

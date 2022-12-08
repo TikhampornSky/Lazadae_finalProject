@@ -27,6 +27,8 @@
       <%= form.label :enable, style: "display: block" %>
       <%= form.check_box :enable %>
     </div>
+  <% else %>
+    <%= form.hidden_field :enable, value: false %>
   <% end %>
 
 

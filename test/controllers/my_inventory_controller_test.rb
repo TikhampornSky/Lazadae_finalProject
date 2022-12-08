@@ -27,7 +27,7 @@ class MyInventoryControllerTest < ActionDispatch::IntegrationTest
   end
 
   test "should destroy item3" do
-    assert_difference("Inventory.count", -2) do       #They are now has item_id = '980190962' 2 items in inventory
+    assert_difference("Inventory.count", -3) do       #They are now has item_id = '980190962' 2 items in inventory
       get "/my_inventory/destroy_item", params: { id: 980190962 }
     end
   end

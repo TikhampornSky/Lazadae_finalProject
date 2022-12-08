@@ -21,7 +21,7 @@ class InventoriesControllerTest < ActionDispatch::IntegrationTest
 
   test "should create inventory" do
     assert_difference("Inventory.count") do
-      post inventories_url, params: { inventory: { price: @inventory.price, qty: @inventory.qty, seller_id: @inventory.seller_id, user_id: @inventory.user_id } }
+      post inventories_url, params: { inventory: { price: @inventory.price, qty: @inventory.qty, seller_id: @inventory.seller_id, user_id: @inventory.user_id, item_id: items(:one).id } }
     end
 
     assert_redirected_to inventory_url(Inventory.last)
