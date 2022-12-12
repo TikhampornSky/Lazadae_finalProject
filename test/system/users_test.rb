@@ -39,7 +39,7 @@ class UsersTest < ApplicationSystemTestCase
 
     fill_in "Email", with: @user.email
     fill_in "Name", with: @user.name
-    fill_in "Password", with: @user.password_digest
+    # fill_in "Password", with: @user.password_digest
     fill_in "User type", with: @user.user_type
     click_on "Update User"
 

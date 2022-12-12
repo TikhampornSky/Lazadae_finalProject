@@ -27,6 +27,7 @@ class UsersController < ApplicationController
 
   # GET /users/1/edit
   def edit
+    @editing = true
   end
 
   # POST /users or /users.json

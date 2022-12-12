@@ -22,10 +22,17 @@
     <%= form.text_field :name, :required => true %>
   </div>
 
-  <div>
-    <%= form.label :password, style: "display: block" %>
-    <%= form.text_field :password, :required => true %>
-  </div>
+  <% if (@editing) %>
+    <div>
+      <%= form.label :password, style: "display: block" %>
+      <%= form.text_field :password, :required => true, value: @user.password_digest, disabled: true %>
+    </div>
+  <% else %>
+    <div>
+      <%= form.label :password, style: "display: block" %>
+      <%= form.text_field :password, :required => true %>
+    </div>
+  <% end %>
 
   <div>
     <%= form.label :user_type, style: "display: block" %>
