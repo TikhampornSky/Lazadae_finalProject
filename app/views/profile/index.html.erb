@@ -14,11 +14,15 @@
 <br><br>
 <p> <b>Changing password</b> </p>
 
-<form action="/profile/changePassword" method="get">
-  <label for="password">Enter your new password:</label>
-  <input type="text" id="password" name="password" required><br><br>
-  <input type="submit" value="Submit">
-</form>
+<%= form_with url: "/profile/changePassword", method: :get do |form| %>
+    <%= form.hidden_field :lock_version, value: @myUser.lock_version %>
+    <div>
+        <%= form.label :enter_new_password, style: "display: block" %>
+        <%= form.text_field :password, :required => true%>
+    </div>
+    <br>
+    <%= form.submit %>
+<% end %>
 
 <br><br>
 <%= link_to "Back to MAIN page", '/main', class:"btn btn-primary" %>

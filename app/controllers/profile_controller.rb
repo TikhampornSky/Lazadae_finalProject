@@ -11,7 +11,7 @@ class ProfileController < ApplicationController
 
   def changePassword
     @myUser = User.find(session[:user_id])
-    @updating = @myUser.update(password: params[:password])
+    @updating = @myUser.update(password: params[:password], lock_version: @myUser.lock_version)
     if (@updating)
       reset_session
       redirect_to '/login', notice: "Change password successfully. Please login again ;)"
