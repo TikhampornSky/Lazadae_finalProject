@@ -71,14 +71,14 @@ class MyInventory_Test < ApplicationSystemTestCase
 
   test "edit information" do
     visit "/my_inventory"
-    visit "markets/980190962/edit"
+    visit "markets/" + "#{items(:one).id}" + "/edit"
     fill_in "Price", with: 999.99
     fill_in "Stock", with: 99
 
     click_on "Update Market"
     assert_text "Market was successfully updated."
 
-    visit "items/980190962/edit"
+    visit "items/" + "#{items(:one).id}" + "/edit"
     fill_in "Name", with: 'NewItem'
     fill_in "Category", with: 'Neww'
 

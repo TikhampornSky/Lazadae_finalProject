@@ -16,19 +16,19 @@ class MyInventoryControllerTest < ActionDispatch::IntegrationTest
 
   test "should destroy item1" do
     assert_difference("Item.count", -1) do
-      get "/my_inventory/destroy_item", params: { id: 980190962 }
+      get "/my_inventory/destroy_item", params: { id: "#{items(:one).id}" }
     end
   end
 
   test "should destroy item2" do
     assert_difference("Market.count", -1) do
-      get "/my_inventory/destroy_item", params: { id: 980190962 }
+      get "/my_inventory/destroy_item", params: { id: "#{items(:one).id}" }
     end
   end
 
   test "should destroy item3" do
-    assert_difference("Inventory.count", -3) do       #They are now has item_id = '980190962' 3 items in inventory
-      get "/my_inventory/destroy_item", params: { id: 980190962 }
+    assert_difference("Inventory.count", -3) do       #They are now has item_id = '"#{items(:one)}"' 3 items in inventory
+      get "/my_inventory/destroy_item", params: { id: "#{items(:one).id}" }
     end
   end
 

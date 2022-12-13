@@ -56,7 +56,7 @@ class Top_Seller_Test < ApplicationSystemTestCase
 
         assert_selector 'tbody' do
             assert_selector 'tr' do
-                assert_selector 'td:nth-child(1)',text: '991613951'
+                assert_selector 'td:nth-child(1)',text: "#{users(:seller).id}"
                 assert_selector 'td:nth-child(2)',text: '111'
                 assert_selector 'td:nth-child(3)',text: '1@gmail.com'
                 assert_selector 'td:nth-child(4)',text: '8'
@@ -65,7 +65,7 @@ class Top_Seller_Test < ApplicationSystemTestCase
 
         assert_selector 'tbody' do
             assert_selector 'tr' do
-                assert_selector 'td:nth-child(1)',text: '135138680'
+                assert_selector 'td:nth-child(1)',text: "#{users(:admin).id}"
                 assert_selector 'td:nth-child(2)',text: '001'
                 assert_selector 'td:nth-child(3)',text: '0@gmail.com'
                 assert_selector 'td:nth-child(4)',text: '3'
@@ -85,7 +85,7 @@ class Top_Seller_Test < ApplicationSystemTestCase
 
         assert_selector 'tbody' do
             assert_selector 'tr' do
-                assert_selector 'td:nth-child(1)',text: '135138680'
+                assert_selector 'td:nth-child(1)',text: "#{users(:admin).id}"
                 assert_selector 'td:nth-child(2)',text: '001'
                 assert_selector 'td:nth-child(3)',text: '0@gmail.com'
                 assert_selector 'td:nth-child(4)',text: '300'
@@ -94,7 +94,7 @@ class Top_Seller_Test < ApplicationSystemTestCase
 
         assert_selector 'tbody' do
             assert_selector 'tr' do
-                assert_selector 'td:nth-child(1)',text: '991613951'
+                assert_selector 'td:nth-child(1)',text: "#{users(:seller).id}"
                 assert_selector 'td:nth-child(2)',text: '111'
                 assert_selector 'td:nth-child(3)',text: '1@gmail.com'
                 assert_selector 'td:nth-child(4)',text: '12'

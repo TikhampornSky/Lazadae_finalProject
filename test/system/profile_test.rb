@@ -28,7 +28,7 @@ class ProfileTest < ApplicationSystemTestCase
   test "showing right information" do 
     visit '/profile'
     assert_selector "h1", text: "Profile"
-    assert_selector "p", text: "User_id: 135138680"
+    assert_selector "p", text: "User_id: #{users(:admin).id}"
     assert_selector "p", text: "Email: 0@gmail.com"
     assert_selector "p", text: "Name: 001"
     assert_selector "p", text: "Role: Admin"
