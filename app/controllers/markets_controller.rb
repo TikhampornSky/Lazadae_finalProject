@@ -31,6 +31,9 @@ class MarketsController < ApplicationController
   def new
     @market = Market.new
     @editing = false
+    if (@myrole != 'admin')
+      redirect_to '/permission'
+    end
   end
 
   # GET /markets/1/edit
