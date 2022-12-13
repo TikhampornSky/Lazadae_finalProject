@@ -2,6 +2,13 @@ class InventoriesController < ApplicationController
   before_action :must_be_logged_in
   before_action :set_inventory, only: %i[ show edit update destroy ]
   before_action :role, :authorization
+  before_action :authorization_new
+
+  def authorization_new
+    if (@myrole == 'buyer')
+      redirect_to '/permission'
+    end
+  end
 
   def authorization
     if (@myrole == 'admin')

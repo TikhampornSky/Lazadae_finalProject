@@ -3,7 +3,13 @@ class MarketsController < ApplicationController
   before_action :set_market, only: %i[ show edit update destroy ]
   before_action :role
   before_action :authorization, only: %i[ index ]
-  #before_action :authorization, except: [:edit, :show]
+  before_action :authorization_new
+
+  def authorization_new
+    if (@myrole == 'buyer')
+      redirect_to '/permission'
+    end
+  end
 
   def authorization
     if (@myrole == 'admin')
@@ -30,6 +36,10 @@ class MarketsController < ApplicationController
   # GET /markets/1/edit
   def edit
     @editing = true
+    @belong_user_id = Market.where(id: params[:id]).first.user_id
+    if (@myrole != 'admin' && @belong_user_id != session[:user_id])
+      redirect_to '/permission'
+    end
   end
 
   # POST /markets or /markets.json
