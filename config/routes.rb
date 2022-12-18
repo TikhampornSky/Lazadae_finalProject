@@ -1,11 +1,6 @@
 Rails.application.routes.draw do
   # devise_for :installs
   get 'my_market/index'
-  get '/items/my_inventory_item'
-  post '/items/create_myInventory'
-  get 'items/mynew'
-  get 'items/create'
-  get 'items/newItem'
   resources :markets
   resources :inventories
   resources :items
@@ -19,10 +14,7 @@ Rails.application.routes.draw do
   get '/login/create'
   get '/login/create/:email/:password', to: 'login#create'
   get '/login/destroy'
-  #------(tmp)
-  get '/login/tryy'     
-  get '/login/tryy/:email/:password', to: 'login#tryy'
-  #------
+
   get '/profile', to: 'profile#index'
   get '/profile/changePassword'
   get '/main', to: 'main#index'

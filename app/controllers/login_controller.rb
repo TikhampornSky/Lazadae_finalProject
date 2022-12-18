@@ -1,5 +1,6 @@
 class LoginController < ApplicationController
   def index
+    @email = params[:email]
   end
 
   def create
@@ -24,18 +25,13 @@ class LoginController < ApplicationController
       else
         warining = 'Wrong Password'
       end
-      redirect_to '/login', notice: "#{warining}"
+      redirect_to "/login", notice: "#{warining}"
     end
   end
 
   def destroy
     reset_session
     redirect_to '/main'
-  end
-
-  def tryy
-    @e = params[:email]
-    @p = params[:password]
   end
 
 end

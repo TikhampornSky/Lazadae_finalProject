@@ -132,14 +132,6 @@ class ItemsController < ApplicationController
     end
   end
 
-  # ----------------------
-  def my_inventory_item
-  end
-
-  def create_myInventory
-  end
-  # ----------------------
-
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_item
