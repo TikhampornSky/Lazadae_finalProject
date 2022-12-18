@@ -1,6 +1,6 @@
 class LoginController < ApplicationController
   def index
-    @email = params[:email]
+    
   end
 
   def create
