@@ -59,7 +59,7 @@ class ItemsControllerTest < ActionDispatch::IntegrationTest
     i1.name = "item1"
     i1.save
 
-    assert_raises("Attempted to update a stale object: Inventory.") do
+    assert_raises(ActiveRecord::StaleObjectError) do
       i2.name = "item2"
       i2.save
     end
