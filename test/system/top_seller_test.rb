@@ -41,7 +41,7 @@ class Top_Seller_Test < ApplicationSystemTestCase
   test "check sorted" do
     visit "/top_seller"
     fill_in "start_date", with: "05/12/2022"
-    fill_in "end_date", with: "20/12/2022"
+    fill_in "end_date", with: "20/12/2023"
     click_on "search"
 
     assert_selector 'table#top1' do
